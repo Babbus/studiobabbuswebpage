@@ -20,14 +20,6 @@ export default function Hero() {
 
   return (
     <section className="pt-24 sm:pt-28 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-[var(--color-accent)] rounded-full animate-pulse" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-[color:oklch(64%_0.22_270)] rounded-full animate-ping" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-[color:oklch(72%_0.14_270)] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-[var(--color-accent)] rounded-full animate-ping" style={{ animationDelay: '3s' }} />
-      </div>
-
       <div className="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 items-center relative z-10">
         <div className="space-y-5 animate-fade-in-up">
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground drop-shadow-[0_1px_0_rgba(0,0,0,0.12)]">

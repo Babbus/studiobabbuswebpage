@@ -2,7 +2,7 @@ import { SiteMeta, Social } from "@/types/content";
 
 export const socials: Social[] = [
   { label: "LinkedIn", url: "https://linkedin.com/in/batuhan-yıldız-4b0b801bb" },
-  { label: "Instagram", url: "https://www.instagram.com/babbusbatu/" },
+  // Instagram removed from footer list
 ];
 
 export const siteMeta: SiteMeta = {
