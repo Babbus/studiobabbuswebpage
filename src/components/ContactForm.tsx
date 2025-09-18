@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
-  const baseField = "bg-white dark:bg-transparent border border-black/40 dark:border-white/20 ring-1 ring-black/10 dark:ring-white/10 rounded px-3 py-2 outline-none focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]";
+  const baseField = "bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]";
   return (
     <form
       className="grid gap-4 max-w-xl"
