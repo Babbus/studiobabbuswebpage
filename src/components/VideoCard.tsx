@@ -13,22 +13,22 @@ export default function VideoCard({ reel }: { reel: Reel }) {
   const displayTitle = useVideoTitle(reel.url, reel.title);
 
   return (
-    <div className="group rounded-xl overflow-hidden border border-white/10 bg-white/[0.02] transition-all duration-300 hover:border-teal-400/30 hover:bg-white/[0.05] hover:scale-[1.02] hover:shadow-xl hover:shadow-teal-500/10">
+    <div className="group rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/[0.02] transition-all duration-300 hover:border-teal-500/30 dark:hover:border-teal-400/30 hover:bg-white/80 dark:hover:bg-white/[0.05] hover:scale-[1.02] hover:shadow-xl hover:shadow-teal-500/10">
       <button className="block w-full relative overflow-hidden" onClick={() => setOpen(true)} aria-label={`Play ${displayTitle || "video"}`}>
-        <div className="aspect-video bg-black/60 grid place-items-center relative overflow-hidden">
+        <div className="aspect-video bg-black/5 dark:bg-black/60 grid place-items-center relative overflow-hidden">
           {thumb ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={thumb} alt="Thumbnail" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
           ) : (
             <span className="text-sm opacity-70">Open video</span>
           )}
-          <span className="absolute inset-0 grid place-items-center bg-black/20 group-hover:bg-black/40 transition-all duration-300">
-            <span className="w-12 h-12 rounded-full bg-teal-400/90 text-black grid place-items-center shadow-lg group-hover:scale-125 group-hover:bg-teal-300 transition-all duration-300 hover:shadow-xl hover:shadow-teal-400/50">▶</span>
+          <span className="absolute inset-0 grid place-items-center bg-black/5 dark:bg-black/20 group-hover:bg-black/10 dark:group-hover:bg-black/40 transition-all duration-300">
+            <span className="w-12 h-12 rounded-full bg-teal-600/90 dark:bg-teal-400/90 text-black grid place-items-center shadow-lg group-hover:scale-125 group-hover:bg-teal-500 dark:group-hover:bg-teal-300 transition-all duration-300 hover:shadow-xl hover:shadow-teal-400/50">▶</span>
           </span>
         </div>
       </button>
       <div className="p-3">
-        <div className="text-sm font-medium leading-tight truncate transition-colors duration-300 group-hover:text-teal-100" title={displayTitle}>{displayTitle}</div>
+        <div className="text-sm font-medium leading-tight truncate transition-colors duration-300 group-hover:text-teal-800 dark:group-hover:text-teal-100" title={displayTitle}>{displayTitle}</div>
         {reel.year && <div className="text-xs opacity-60 group-hover:opacity-80 transition-opacity duration-300">{reel.year}</div>}
       </div>
 
