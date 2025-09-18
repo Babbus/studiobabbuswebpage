@@ -13,7 +13,7 @@ export default function Home() {
     <div className="min-h-screen relative">
       {/* Enhanced background overlay with shimmer effect */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 shimmer opacity-30" />
+        <div className="absolute inset-0 shimmer opacity-10 dark:opacity-30" />
       </div>
       
       <Hero />
@@ -37,14 +37,14 @@ export default function Home() {
           </div>
           <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <InstagramProfile />
-            <div className="audio-wave p-4 rounded-xl border border-white/10 bg-white/[0.02] hover:border-teal-400/30 transition-all duration-300">
-              <div className="text-sm opacity-70">
+            <div className="audio-wave p-4 rounded-xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/[0.02] hover:border-teal-500/30 dark:hover:border-teal-400/30 transition-all duration-300">
+              <div className="text-sm opacity-80">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-teal-400">🎵</span>
+                  <span className="text-teal-600 dark:text-teal-400">🎵</span>
                   <span>Currently working on game audio</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-teal-400">🎧</span>
+                  <span className="text-teal-600 dark:text-teal-400">🎧</span>
                   <span>Available for collaborations</span>
                 </div>
               </div>

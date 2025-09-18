@@ -30,7 +30,7 @@ export default function Hero() {
 
       <div className="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 items-center relative z-10">
         <div className="space-y-5 animate-fade-in-up">
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-foreground drop-shadow-[0_1px_0_rgba(0,0,0,0.12)] dark:drop-shadow-none dark:bg-gradient-to-r dark:from-white dark:via-teal-100 dark:to-white dark:bg-clip-text dark:text-transparent animate-gradient">
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground drop-shadow-[0_1px_0_rgba(0,0,0,0.12)]">
             {siteMeta.displayName} — {siteMeta.alias}
           </h1>
           <p className="text-base/7 sm:text-lg opacity-80 max-w-[60ch] transition-opacity duration-300 hover:opacity-100">
@@ -38,7 +38,7 @@ export default function Hero() {
           </p>
           <div className="flex gap-3">
             <button
-              className="group rounded-full border border-black/10 dark:border-white/10 bg-teal-600/10 dark:bg-teal-500/20 text-teal-700 dark:text-teal-200 hover:bg-teal-600/20 dark:hover:bg-teal-500/40 hover:border-teal-500/30 dark:hover:border-teal-400/30 px-5 py-2 text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/20"
+              className="group rounded-full border border-black/10 dark:border-white/10 bg-teal-600/10 dark:bg-teal-500/20 text-teal-800 dark:text-teal-200 hover:bg-teal-600/20 dark:hover:bg-teal-500/40 hover:border-teal-500/30 dark:hover:border-teal-400/30 px-5 py-2 text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/20"
               onClick={() => setShowVideo(!showVideo)}
             >
               <span className="group-hover:animate-pulse">
@@ -75,7 +75,7 @@ export default function Hero() {
                 />
               )}
               <button
-                className="w-16 h-16 rounded-full bg-teal-500/90 dark:bg-teal-400/90 text-black grid place-items-center shadow-lg hover:scale-110 hover:bg-teal-400 transition-all duration-300 hover:shadow-xl hover:shadow-teal-400/30 relative z-10"
+                className="w-16 h-16 rounded-full bg-teal-600/90 dark:bg-teal-400/90 text-black grid place-items-center shadow-lg hover:scale-110 hover:bg-teal-500 dark:hover:bg-teal-300 transition-all duration-300 hover:shadow-xl hover:shadow-teal-400/30 relative z-10"
                 onClick={() => setShowVideo(true)}
                 aria-label="Play showreel"
               >

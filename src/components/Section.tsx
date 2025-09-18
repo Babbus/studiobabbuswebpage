@@ -3,7 +3,7 @@ export default function Section({ id, title, children }: { id?: string; title?: 
     <section id={id} className="py-16 sm:py-20 relative">
       <div className="max-w-6xl mx-auto px-4">
         {title && (
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-8 text-foreground drop-shadow-[0_1px_0_rgba(0,0,0,0.12)] dark:drop-shadow-none dark:bg-gradient-to-r dark:from-white dark:via-teal-100 dark:to-white dark:bg-clip-text dark:text-transparent animate-fade-in-up">
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-8 text-foreground">
             {title}
           </h2>
         )}
