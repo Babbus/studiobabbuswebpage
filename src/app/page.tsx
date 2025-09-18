@@ -3,7 +3,6 @@ import Section from "@/components/Section";
 import ReelCarousel from "@/components/ReelCarousel";
 import PortfolioWithFilters from "@/components/PortfolioWithFilters";
 import InstagramProfile from "@/components/InstagramProfile";
-import InstagramGallery from "@/components/InstagramGallery";
 import ContactForm from "@/components/ContactForm";
 import ExpandableText from "@/components/ExpandableText";
 import { reels } from "@/content/reels";
@@ -62,7 +61,7 @@ export default function Home() {
             <ContactForm />
           </div>
           <div className="space-y-8 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <InstagramGallery />
+            <InstagramProfile />
           </div>
         </div>
       </Section>
