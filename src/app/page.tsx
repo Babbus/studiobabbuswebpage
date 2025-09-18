@@ -2,7 +2,6 @@ import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import ReelCarousel from "@/components/ReelCarousel";
 import PortfolioWithFilters from "@/components/PortfolioWithFilters";
-import InstagramStrip from "@/components/InstagramStrip";
 import InstagramProfile from "@/components/InstagramProfile";
 import InstagramGallery from "@/components/InstagramGallery";
 import ContactForm from "@/components/ContactForm";

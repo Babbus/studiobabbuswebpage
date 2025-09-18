@@ -1,9 +1,6 @@
 import { siteMeta } from "@/content/site";
 
 export default function InstagramProfile() {
-  // Placeholder for Instagram profile picture - you can replace with actual image URL
-  const profileImageUrl = "/instagram-profile.jpg"; // Add your profile image to public folder
-  
   return (
     <div className="group flex items-center gap-4 p-4 rounded-xl border border-white/10 bg-white/[0.02] hover:border-teal-400/30 hover:bg-white/[0.05] transition-all duration-300">
       <div className="relative">
