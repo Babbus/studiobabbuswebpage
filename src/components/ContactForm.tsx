@@ -1,72 +1,68 @@
 "use client";
 
-import { siteMeta } from "@/content/site";
 import { useState } from "react";
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sent" | "error" | "sending">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (status === "sending") return;
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = String(formData.get("name") || "");
+    const company = String(formData.get("company") || "");
+    const email = String(formData.get("email") || "");
+    const budget = String(formData.get("budget") || "");
+    const timeline = String(formData.get("timeline") || "");
+    const message = String(formData.get("message") || "");
+
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, company, email, budget, timeline, message }),
+      });
+      if (res.ok) {
+        setStatus("sent");
+        form.reset();
+        return;
+      }
+      throw new Error("Failed to send");
+    } catch {
+      // Fallback to mailto if server send fails
+      window.location.href = `mailto:babbusbatu@gmail.com?subject=${encodeURIComponent(
+        `Inquiry from ${name || "(no name)"}`
+      )}&body=${encodeURIComponent(
+        `Name: ${name}\nCompany: ${company}\nEmail: ${email}\nBudget: ${budget}\nTimeline: ${timeline}\n\nMessage:\n${message}`
+      )}`;
+      setStatus("error");
+    }
+  }
+
   return (
-    <form
-      className="grid gap-4 max-w-xl"
-      onSubmit={async (e) => {
-        e.preventDefault();
-        setStatus("sending");
-        const form = e.currentTarget as HTMLFormElement;
-        const data = new FormData(form);
-        const payload = Object.fromEntries(data.entries());
-        try {
-          const res = await fetch("/api/contact", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-          if (!res.ok) throw new Error(await res.text());
-          setStatus("sent");
-          form.reset();
-        } catch (err) {
-          // Fallback to mailto
-          const subject = encodeURIComponent(`Inquiry from ${data.get("name")}`);
-          const body = encodeURIComponent(
-            `Name: ${data.get("name")}\nCompany: ${data.get("company")}\nEmail: ${data.get("email")}\nBudget: ${data.get("budget")}\nTimeline: ${data.get("timeline")}\n\nMessage:\n${data.get("message")}`
-          );
-          window.location.href = `mailto:${siteMeta.email}?subject=${subject}&body=${body}`;
-          setStatus("error");
-        }
-      }}
-    >
+    <form onSubmit={onSubmit} className="space-y-4">
       <div className="grid sm:grid-cols-2 gap-4">
-        <label className="grid gap-1 text-sm">
-          <span>Name</span>
-          <input name="name" required className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
-        </label>
-        <label className="grid gap-1 text-sm">
-          <span>Company</span>
-          <input name="company" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
-        </label>
+        <input name="name" placeholder="Name" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
+        <input name="company" placeholder="Company (optional)" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
       </div>
-      <label className="grid gap-1 text-sm">
-        <span>Email</span>
-        <input type="email" name="email" required className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
-      </label>
       <div className="grid sm:grid-cols-2 gap-4">
-        <label className="grid gap-1 text-sm">
-          <span>Budget</span>
-          <input name="budget" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" placeholder="USD or range" />
-        </label>
-        <label className="grid gap-1 text-sm">
-          <span>Timeline</span>
-          <input name="timeline" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" placeholder="e.g., 4–6 weeks" />
-        </label>
+        <input name="email" type="email" placeholder="Email" required className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
+        <input name="budget" placeholder="Budget (optional)" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
       </div>
-      <label className="grid gap-1 text-sm">
-        <span>Message</span>
-        <textarea name="message" rows={6} required className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
-      </label>
-      <button disabled={status==="sending"} className="rounded-full border border-black/10 dark:border-white/10 bg-[color:oklch(86%_0.06_270)] dark:bg-[color:oklch(48%_0.18_270)] text-[color:oklch(36%_0.16_270)] dark:text-white hover:bg-[color:oklch(82%_0.08_270)] dark:hover:bg-[color:oklch(54%_0.2_270)] hover:border-[color:oklch(52%_0.18_270)] dark:hover:border-[color:oklch(62%_0.22_270)] px-5 py-2 text-sm w-fit">
-        {status === "sending" ? "Sending..." : "Send Email"}
+      <div className="grid sm:grid-cols-2 gap-4">
+        <input name="timeline" placeholder="Timeline (optional)" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
+      </div>
+      <textarea name="message" placeholder="Tell me about your project" rows={5} className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3] w-full" />
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="rounded-md px-5 py-2 bg-[color:oklch(48%_0.18_270)] text-white hover:bg-[color:oklch(54%_0.2_270)] disabled:opacity-60 border border-white/10 transition-all duration-300"
+      >
+        {status === "sending" ? "Sending..." : status === "sent" ? "Sent ✓" : "Send"}
       </button>
-      {status === "sent" && <div className="text-xs opacity-70 mt-2">Thanks! Your message was sent.</div>}
-      {status === "error" && <div className="text-xs opacity-70 mt-2">We opened your email client as a fallback.</div>}
     </form>
   );
 } 
