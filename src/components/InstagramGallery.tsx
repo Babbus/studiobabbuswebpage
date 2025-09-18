@@ -4,6 +4,18 @@ import { useState } from "react";
 import { instagramPosts, instagramProfile } from "@/content/instagram";
 import Link from "next/link";
 
+function getInstagramEmbed(url: string): string | undefined {
+  try {
+    const u = new URL(url);
+    if (!u.hostname.includes("instagram.com")) return undefined;
+    const path = u.pathname.replace(/\/$/, "");
+    if (path.startsWith("/p/") || path.startsWith("/reel/")) {
+      return `https://www.instagram.com${path}/embed`;
+    }
+  } catch {}
+  return undefined;
+}
+
 export default function InstagramGallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
@@ -21,47 +33,53 @@ export default function InstagramGallery() {
       </div>
       
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        {instagramPosts.map((post, index) => (
-          <button
-            key={post.id}
-            onClick={() => setSelectedImage(index)}
-            className="group relative aspect-square rounded-lg overflow-hidden border border-white/10 bg-white/[0.02] hover:border-teal-400/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-teal-500/10"
-          >
-            {/* Try to load actual image, fallback to placeholder */}
-            <div className="absolute inset-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={post.imageUrl}
-                alt={post.caption}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                onError={(e) => {
-                  // Fallback to gradient placeholder if image fails to load
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  const parent = target.parentElement;
-                  if (parent) {
-                    parent.innerHTML = `
-                      <div class="w-full h-full bg-gradient-to-br from-teal-400 to-teal-600 opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-                      <div class="absolute inset-0 grid place-items-center">
-                        <div class="text-4xl opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                          ${index % 3 === 0 ? '🎵' : index % 3 === 1 ? '🎧' : '🎤'}
-                        </div>
-                      </div>
-                    `;
-                  }
-                }}
-              />
-            </div>
-            
-            {/* Caption overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
-              <p className="text-xs font-medium text-white/90 line-clamp-2">{post.caption}</p>
-            </div>
-            
-            {/* Hover effect */}
-            <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 transition-colors duration-300" />
-          </button>
-        ))}
+        {instagramPosts.map((post, index) => {
+          const embed = getInstagramEmbed(post.url);
+          return (
+            <button
+              key={post.id}
+              onClick={() => (embed ? window.open(post.url, "_blank") : setSelectedImage(index))}
+              className="group relative aspect-square rounded-lg overflow-hidden border border-white/10 bg-white/[0.02] hover:border-teal-400/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-teal-500/10"
+            >
+              {embed ? (
+                <iframe
+                  src={embed}
+                  className="absolute inset-0 w-full h-full"
+                  allow="encrypted-media; picture-in-picture"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="absolute inset-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={post.imageUrl}
+                    alt={post.caption}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        parent.innerHTML = `
+                          <div class=\"w-full h-full bg-gradient-to-br from-teal-400 to-teal-600 opacity-20 group-hover:opacity-30 transition-opacity duration-300\"></div>
+                          <div class=\"absolute inset-0 grid place-items-center\">
+                            <div class=\"text-4xl opacity-10 group-hover:opacity-20 transition-opacity duration-300\">🎵</div>
+                          </div>
+                        `;
+                      }
+                    }}
+                  />
+                </div>
+              )}
+              {/* Caption overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/60 to-transparent">
+                <p className="text-xs font-medium text-white/90 line-clamp-2">{post.caption}</p>
+              </div>
+              {/* Hover effect */}
+              <div className="absolute inset-0 bg-teal-400/0 group-hover:bg-teal-400/10 transition-colors duration-300" />
+            </button>
+          );
+        })}
       </div>
 
       {/* Modal for selected image */}
@@ -86,13 +104,11 @@ export default function InstagramGallery() {
                   const parent = target.parentElement;
                   if (parent) {
                     parent.innerHTML = `
-                      <div class="w-full h-full bg-gradient-to-br from-teal-400 to-teal-600 opacity-30 grid place-items-center">
-                        <div class="text-center space-y-4">
-                          <div class="text-6xl">
-                            ${selectedImage % 3 === 0 ? '🎵' : selectedImage % 3 === 1 ? '🎧' : '🎤'}
-                          </div>
-                          <p class="text-lg font-medium">Instagram Post</p>
-                          <p class="text-sm opacity-70">Image placeholder</p>
+                      <div class=\"w-full h-full bg-gradient-to-br from-teal-400 to-teal-600 opacity-30 grid place-items-center\">
+                        <div class=\"text-center space-y-4\">
+                          <div class=\"text-6xl\">🎧</div>
+                          <p class=\"text-lg font-medium\">Instagram Post</p>
+                          <p class=\"text-sm opacity-70\">Image placeholder</p>
                         </div>
                       </div>
                     `;
