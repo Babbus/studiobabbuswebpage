@@ -1,0 +1,86 @@
+"use client";
+
+import type { Project } from "@/types/content";
+import { getEmbedSrcFromUrl, getAppleMusicEmbed, getAppleEmbedHeight, getSteamAppIdFromUrl, getSteamWidgetUrl } from "@/lib/video";
+import Link from "next/link";
+
+export default function ProjectCard({ project }: { project: Project }) {
+  const mediaVideo = project.media?.find((m) => m.type === "video")?.url;
+  const mediaAudioEmbed = project.media?.find((m) => m.type === "audio")?.url; // allow direct Apple embed URL here
+
+  const videoUrl = mediaVideo
+    || project.links?.find((l) => l.url.includes("youtube.com") || l.url.includes("youtu.be") || l.url.includes("vimeo.com"))?.url;
+
+  const appleLink = project.links?.find((l) => l.url.includes("music.apple.com"))?.url;
+  const steamLink = project.links?.find((l) => l.url.includes("store.steampowered.com/app/"))?.url;
+
+  const embed = videoUrl ? getEmbedSrcFromUrl(videoUrl) : undefined;
+  const appleEmbed = mediaAudioEmbed || (appleLink ? getAppleMusicEmbed(appleLink) : undefined);
+  const appleHeight = appleEmbed ? getAppleEmbedHeight(appleEmbed) : undefined;
+  const steamAppId = steamLink ? getSteamAppIdFromUrl(steamLink) : undefined;
+
+  return (
+    <div className="group rounded-xl border border-white/10 overflow-hidden bg-white/[0.02] transition-all duration-300 hover:border-teal-400/30 hover:bg-white/[0.05] hover:scale-[1.02] hover:shadow-xl hover:shadow-teal-500/10">
+      {appleEmbed && (
+        <div className="w-full bg-black overflow-hidden">
+          <iframe
+            allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+            height={appleHeight}
+            style={{ width: "100%", overflow: "hidden", background: "transparent" }}
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src={appleEmbed}
+            className="transition-transform duration-300 group-hover:scale-[1.01]"
+          />
+        </div>
+      )}
+
+      {embed && (
+        <div className="aspect-video bg-black overflow-hidden">
+          <iframe 
+            className="w-full h-full transition-transform duration-300 group-hover:scale-[1.01]" 
+            src={embed} 
+            title={project.title} 
+            loading="lazy" 
+            allow="autoplay; encrypted-media; picture-in-picture" 
+            allowFullScreen 
+          />
+        </div>
+      )}
+
+      <div className="p-4">
+        <div className="text-sm uppercase opacity-60 group-hover:opacity-80 group-hover:text-teal-300 transition-all duration-300">{project.category}</div>
+        <h3 className="text-base font-semibold tracking-tight group-hover:text-teal-100 transition-colors duration-300">{project.title}</h3>
+        <div className="text-xs opacity-60 group-hover:opacity-80 transition-opacity duration-300">{project.year} · {project.roles.join(", ")}</div>
+        {project.summary && <p className="text-sm opacity-80 mt-2 group-hover:opacity-90 transition-opacity duration-300">{project.summary}</p>}
+
+        {project.links && project.links.length > 0 && (
+          <div className="mt-3 flex gap-3 flex-wrap">
+            {project.links.map((l) => (
+              <Link 
+                key={l.url} 
+                href={l.url} 
+                target="_blank" 
+                className="text-xs underline underline-offset-4 hover:no-underline hover:text-teal-300 transition-colors duration-300"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {steamAppId && (
+          <div className="mt-4 overflow-hidden rounded-lg">
+            <iframe 
+              src={getSteamWidgetUrl(steamAppId)} 
+              frameBorder="0" 
+              width="100%" 
+              height="190" 
+              title={`${project.title} — Steam`}
+              className="transition-transform duration-300 group-hover:scale-[1.01]"
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+} 
