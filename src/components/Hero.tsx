@@ -30,7 +30,7 @@ export default function Hero() {
 
       <div className="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 items-center relative z-10">
         <div className="space-y-5 animate-fade-in-up">
-          <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight text-foreground dark:bg-gradient-to-r dark:from-white dark:via-teal-100 dark:to-white dark:bg-clip-text dark:text-transparent animate-gradient">
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-foreground drop-shadow-[0_1px_0_rgba(0,0,0,0.12)] dark:drop-shadow-none dark:bg-gradient-to-r dark:from-white dark:via-teal-100 dark:to-white dark:bg-clip-text dark:text-transparent animate-gradient">
             {siteMeta.displayName} — {siteMeta.alias}
           </h1>
           <p className="text-base/7 sm:text-lg opacity-80 max-w-[60ch] transition-opacity duration-300 hover:opacity-100">
