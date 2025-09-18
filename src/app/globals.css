@@ -2,9 +2,9 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #141414;
+  --foreground: #0b1220;
   --accent: #0f766e; /* deep teal */
-  --lux: #e6cfa6; /* champagne */
+  --lux: #bca57a; /* champagne light */
 }
 
 @theme inline {
@@ -41,9 +41,9 @@ body::before {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 20% 20%, rgba(20, 184, 166, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(20, 184, 166, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 40% 60%, rgba(20, 184, 166, 0.02) 0%, transparent 50%);
+    radial-gradient(circle at 20% 20%, rgba(20, 184, 166, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(20, 184, 166, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(20, 184, 166, 0.04) 0%, transparent 50%);
   pointer-events: none;
   z-index: -1;
 }
