@@ -13,7 +13,7 @@ export default function VideoCard({ reel }: { reel: Reel }) {
   const displayTitle = useVideoTitle(reel.url, reel.title);
 
   return (
-    <div className="group rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/[0.02] transition-all duration-300 hover:border-[color:oklch(52%_0.18_270)] dark:hover:border-[color:oklch(62%_0.22_270)] hover:bg-white/80 dark:hover:bg-white/[0.05] hover:scale-[1.02] hover:shadow-xl hover:shadow-[color:oklch(62%_0.22_270)/0.2]">
+    <div className="group rounded-xl overflow-hidden bg-white/70 dark:bg-white/[0.02] border-2 border-black/50 dark:border-white/20 ring-1 ring-black/10 dark:ring-white/10 transition-all duration-300 hover:border-[color:oklch(52%_0.18_270)] dark:hover:border-[color:oklch(62%_0.22_270)] hover:bg-white/80 dark:hover:bg-white/[0.05] hover:scale-[1.02] hover:shadow-xl hover:shadow-[color:oklch(62%_0.22_270)/0.2]">
       <button className="block w-full relative overflow-hidden" onClick={() => setOpen(true)} aria-label={`Play ${displayTitle || "video"}`}>
         <div className="aspect-video bg-black/5 dark:bg-black/60 grid place-items-center relative overflow-hidden">
           {thumb ? (

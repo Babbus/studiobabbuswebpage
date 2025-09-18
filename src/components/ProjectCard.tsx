@@ -20,7 +20,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   const steamAppId = steamLink ? getSteamAppIdFromUrl(steamLink) : undefined;
 
   return (
-    <div className="group rounded-xl border border-white/10 overflow-hidden bg-white/[0.02] transition-all duration-300 hover:border-teal-400/30 hover:bg-white/[0.05] hover:scale-[1.02] hover:shadow-xl hover:shadow-teal-500/10">
+    <div className="group rounded-xl overflow-hidden bg-white/70 dark:bg-white/[0.02] border-2 border-black/50 dark:border-white/20 ring-1 ring-black/10 dark:ring-white/10 transition-all duration-300 hover:border-[color:oklch(52%_0.18_270)] dark:hover:border-[color:oklch(62%_0.22_270)] hover:bg-white/80 dark:hover:bg-white/[0.05] hover:scale-[1.02] hover:shadow-xl hover:shadow-[color:oklch(62%_0.22_270)/0.2]">
       {appleEmbed && (
         <div className="w-full bg-black overflow-hidden">
           <iframe
@@ -48,8 +48,8 @@ export default function ProjectCard({ project }: { project: Project }) {
       )}
 
       <div className="p-4">
-        <div className="text-sm uppercase opacity-60 group-hover:opacity-80 group-hover:text-teal-300 transition-all duration-300">{project.category}</div>
-        <h3 className="text-base font-semibold tracking-tight group-hover:text-teal-100 transition-colors duration-300">{project.title}</h3>
+        <div className="text-sm uppercase opacity-60 group-hover:opacity-80 group-hover:text-[color:oklch(36%_0.16_270)] transition-all duration-300">{project.category}</div>
+        <h3 className="text-base font-semibold tracking-tight group-hover:text-[color:oklch(36%_0.16_270)] dark:group-hover:text-white transition-colors duration-300">{project.title}</h3>
         <div className="text-xs opacity-60 group-hover:opacity-80 transition-opacity duration-300">{project.year} · {project.roles.join(", ")}</div>
         {project.summary && <p className="text-sm opacity-80 mt-2 group-hover:opacity-90 transition-opacity duration-300">{project.summary}</p>}
 
@@ -60,7 +60,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 key={l.url} 
                 href={l.url} 
                 target="_blank" 
-                className="text-xs underline underline-offset-4 hover:no-underline hover:text-teal-300 transition-colors duration-300"
+                className="text-xs underline underline-offset-4 hover:no-underline hover:text-[color:oklch(36%_0.16_270)] transition-colors duration-300"
               >
                 {l.label}
               </Link>
