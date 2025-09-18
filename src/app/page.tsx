@@ -5,12 +5,14 @@ import PortfolioWithFilters from "@/components/PortfolioWithFilters";
 import InstagramProfile from "@/components/InstagramProfile";
 import ContactForm from "@/components/ContactForm";
 import ExpandableText from "@/components/ExpandableText";
+import AudioBackground from "@/components/AudioBackground";
 import { reels } from "@/content/reels";
 import { shortBio, longBio } from "@/content/about";
 
 export default function Home() {
   return (
     <div className="min-h-screen relative">
+      <AudioBackground />
       {/* Enhanced background overlay with shimmer effect */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 shimmer opacity-10 dark:opacity-30" />
