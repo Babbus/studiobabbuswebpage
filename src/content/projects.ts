@@ -296,7 +296,10 @@ export const projects: Project[] = [
     roles: ["Composer", "Producer"],
     tools: ["Ableton Live", "Serum"],
     summary: "A smooth, electronic-driven track blending mellow synth tones with dynamic production.",
-    links: [{ label: "Apple Music", url: "https://music.apple.com/us/album/liquid-love-single/1619355330" }],
+    media: [
+      { type: "audio", url: "https://embed.music.apple.com/tr/album/liquid-love-single/1638189346" },
+    ],
+    links: [{ label: "Apple Music", url: "https://music.apple.com/tr/album/liquid-love-single/1638189346" }],
     tags: ["Electronic", "Single"],
   },
   {
@@ -307,7 +310,10 @@ export const projects: Project[] = [
     roles: ["Composer", "Producer"],
     tools: ["Ableton Live"],
     summary: "A follow-up to Relief, this single carries forward the ambient-electronic aesthetic with more layered atmospheres.",
-    links: [{ label: "Apple Music", url: "https://music.apple.com/us/album/after-relief-single/1566470707" }],
+    media: [
+      { type: "audio", url: "https://embed.music.apple.com/tr/album/after-relief-single/1566484863" },
+    ],
+    links: [{ label: "Apple Music", url: "https://music.apple.com/tr/album/after-relief-single/1566484863" }],
     tags: ["Electronic", "Ambient"],
   },
   {
@@ -318,7 +324,10 @@ export const projects: Project[] = [
     roles: ["Composer", "Producer"],
     tools: ["Ableton Live"],
     summary: "Relief marked my first independent release, establishing the foundation of my electronic style.",
-    links: [{ label: "Apple Music", url: "https://music.apple.com/us/album/relief-single/1566470705" }],
+    media: [
+      { type: "audio", url: "https://embed.music.apple.com/tr/album/relief-single/1566478822" },
+    ],
+    links: [{ label: "Apple Music", url: "https://music.apple.com/tr/album/relief-single/1566478822" }],
     tags: ["Electronic", "Debut"],
   },
 ]; 
