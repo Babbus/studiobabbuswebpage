@@ -12,7 +12,7 @@ export default function InstagramStrip() {
               <a href={p.url} target="_blank" className="block aspect-square overflow-hidden rounded-lg border border-white/10">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 {p.imageUrl ? (
-                  <img src={p.imageUrl} alt={p.alt || "Instagram post"} className="w-full h-full object-cover" />
+                  <img src={p.imageUrl} alt={p.caption || "Instagram post"} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-teal-900/40 via-teal-700/20 to-transparent" />
                 )}
