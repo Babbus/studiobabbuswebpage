@@ -7,6 +7,14 @@
   --lux: #bca57a; /* champagne light */
 }
 
+/* Manual overrides via [data-theme] should take precedence */
+html[data-theme="light"] {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -23,6 +31,20 @@
     --accent: #14b8a6; /* brighter teal in dark */
     --lux: #e6cfa6;
   }
+}
+
+/* But when [data-theme] is set, force the palette regardless of media */
+html[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #0b1220;
+  --accent: #0f766e;
+  --lux: #bca57a;
+}
+html[data-theme="dark"] {
+  --background: #0a0f12;
+  --foreground: #e6e6e6;
+  --accent: #14b8a6;
+  --lux: #e6cfa6;
 }
 
 body {
