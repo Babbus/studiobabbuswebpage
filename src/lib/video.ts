@@ -9,8 +9,15 @@ export function getYouTubeId(url: string): string | undefined {
       const list = u.searchParams.get("list");
       if (list) return list;
       const parts = u.pathname.split("/").filter(Boolean);
-      const idx = parts.findIndex((p) => p === "embed");
-      if (idx >= 0 && parts[idx + 1]) return parts[idx + 1];
+      // /embed/{id}
+      const embedIdx = parts.findIndex((p) => p === "embed");
+      if (embedIdx >= 0 && parts[embedIdx + 1]) return parts[embedIdx + 1];
+      // /watch/{id}
+      if (parts[0] === "watch" && parts[1]) return parts[1];
+      // /shorts/{id}
+      if (parts[0] === "shorts" && parts[1]) return parts[1];
+      // /{id}
+      if (parts.length === 1 && /^[a-zA-Z0-9_-]{6,}$/.test(parts[0])) return parts[0];
     }
     if (u.hostname === "youtu.be") {
       const id = u.pathname.replace("/", "");
