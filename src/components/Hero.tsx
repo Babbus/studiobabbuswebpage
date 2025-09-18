@@ -22,10 +22,10 @@ export default function Hero() {
     <section className="pt-24 sm:pt-28 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-2 h-2 bg-teal-400 rounded-full animate-pulse" />
-        <div className="absolute top-40 right-20 w-1 h-1 bg-teal-300 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-teal-200 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-teal-400 rounded-full animate-ping" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-20 left-10 w-2 h-2 bg-[var(--color-accent)] rounded-full animate-pulse" />
+        <div className="absolute top-40 right-20 w-1 h-1 bg-[color:oklch(64%_0.22_270)] rounded-full animate-ping" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-40 left-1/4 w-1.5 h-1.5 bg-[color:oklch(72%_0.14_270)] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-[var(--color-accent)] rounded-full animate-ping" style={{ animationDelay: '3s' }} />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 items-center relative z-10">
@@ -38,7 +38,7 @@ export default function Hero() {
           </p>
           <div className="flex gap-3">
             <button
-              className="group rounded-full border border-black/10 dark:border-white/10 bg-teal-600/10 dark:bg-teal-500/20 text-teal-800 dark:text-teal-200 hover:bg-teal-600/20 dark:hover:bg-teal-500/40 hover:border-teal-500/30 dark:hover:border-teal-400/30 px-5 py-2 text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-teal-500/20"
+              className="group rounded-full border border-black/10 dark:border-white/10 bg-[color:oklch(86%_0.06_270)] dark:bg-[color:oklch(48%_0.18_270)] text-[color:oklch(36%_0.16_270)] dark:text-white hover:bg-[color:oklch(82%_0.08_270)] dark:hover:bg-[color:oklch(54%_0.2_270)] hover:border-[color:oklch(52%_0.18_270)] dark:hover:border-[color:oklch(62%_0.22_270)] px-5 py-2 text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg"
               onClick={() => setShowVideo(!showVideo)}
             >
               <span className="group-hover:animate-pulse">
@@ -53,7 +53,7 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="group aspect-video rounded-2xl bg-gradient-to-br from-teal-700/10 via-teal-600/5 to-transparent dark:from-teal-900/40 dark:via-teal-700/20 dark:to-transparent border border-black/10 dark:border-white/10 p-2 transition-all duration-500 hover:border-teal-500/30 dark:hover:border-teal-400/30 hover:shadow-2xl hover:shadow-teal-500/10 animate-fade-in-up relative overflow-hidden" style={{ animationDelay: '0.3s' }}>
+        <div className="group aspect-video rounded-2xl bg-gradient-to-br from-[color:oklch(80%_0.05_270)] via-[color:oklch(92%_0.02_270)] to-transparent dark:from-[color:oklch(36%_0.12_270)] dark:via-[color:oklch(28%_0.08_270)] dark:to-transparent border border-black/10 dark:border-white/10 p-2 transition-all duration-500 hover:border-[color:oklch(52%_0.18_270)] dark:hover:border-[color:oklch(62%_0.22_270)] hover:shadow-2xl hover:shadow-[color:oklch(62%_0.22_270)/0.2] animate-fade-in-up relative overflow-hidden" style={{ animationDelay: '0.3s' }}>
           {showVideo && featuredSrc ? (
             <div className="w-full h-full rounded-xl overflow-hidden bg-black">
               <iframe
@@ -75,7 +75,7 @@ export default function Hero() {
                 />
               )}
               <button
-                className="w-16 h-16 rounded-full bg-teal-600/90 dark:bg-teal-400/90 text-black grid place-items-center shadow-lg hover:scale-110 hover:bg-teal-500 dark:hover:bg-teal-300 transition-all duration-300 hover:shadow-xl hover:shadow-teal-400/30 relative z-10"
+                className="w-16 h-16 rounded-full bg-[color:oklch(62%_0.22_270)] text-white grid place-items-center shadow-lg hover:scale-110 hover:bg-[color:oklch(58%_0.22_270)] transition-all duration-300 hover:shadow-xl"
                 onClick={() => setShowVideo(true)}
                 aria-label="Play showreel"
               >
