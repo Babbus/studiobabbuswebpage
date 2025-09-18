@@ -10,7 +10,9 @@ export function useVideoTitle(url: string | undefined, fallback?: string) {
     let cancelled = false;
     async function run() {
       try {
-        const endpoint = `https://noembed.com/embed?url=${encodeURIComponent(url)}`;
+        const safeUrl: string = typeof url === "string" ? url : "";
+        if (!safeUrl) return;
+        const endpoint = `https://noembed.com/embed?url=${encodeURIComponent(safeUrl)}`;
         const res = await fetch(endpoint, { cache: "force-cache" });
         if (!res.ok) return;
         const data = await res.json();
