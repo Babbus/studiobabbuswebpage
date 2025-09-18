@@ -10,7 +10,6 @@ export default function InstagramStrip() {
           {instagramPosts.map((p) => (
             <li key={p.url}>
               <a href={p.url} target="_blank" className="block aspect-square overflow-hidden rounded-lg border border-white/10">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 {p.imageUrl ? (
                   <img src={p.imageUrl} alt={p.caption || "Instagram post"} className="w-full h-full object-cover" />
                 ) : (

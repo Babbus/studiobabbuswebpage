@@ -13,7 +13,7 @@ function applyTheme(theme: Exclude<Theme, "system">) {
   const root = document.documentElement; // <html>
   root.setAttribute("data-theme", theme);
   // Hint to UA for built-in form controls
-  (root.style as any).colorScheme = theme;
+  root.style.setProperty("color-scheme", theme);
 }
 
 export function useTheme() {
