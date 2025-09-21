@@ -17,13 +17,14 @@ export default function ContactForm() {
     const budget = String(formData.get("budget") || "");
     const timeline = String(formData.get("timeline") || "");
     const message = String(formData.get("message") || "");
+    const website = String(formData.get("website") || ""); // honeypot
 
     setStatus("sending");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, company, email, budget, timeline, message }),
+        body: JSON.stringify({ name, company, email, budget, timeline, message, website }),
       });
       if (res.ok) {
         setStatus("sent");
@@ -44,6 +45,7 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
+      <input name="website" autoComplete="off" tabIndex={-1} aria-hidden="true" style={{ display: "none" }} />
       <div className="grid sm:grid-cols-2 gap-4">
         <input name="name" placeholder="Name" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
         <input name="company" placeholder="Company (optional)" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />

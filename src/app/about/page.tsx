@@ -4,7 +4,6 @@ import { useState } from "react";
 import Section from "@/components/Section";
 import ExpandableText from "@/components/ExpandableText";
 import ContactModal from "@/components/ContactModal";
-import InstagramStrip from "@/components/InstagramStrip";
 import { shortBio, longBio } from "@/content/about";
 import { services } from "@/content/services";
 import { clients } from "@/content/clients";
@@ -47,10 +46,6 @@ export default function AboutPage() {
             </li>
           ))}
         </ul>
-      </Section>
-
-      <Section title="From Instagram">
-        <InstagramStrip />
       </Section>
 
       <Section title="Clients">

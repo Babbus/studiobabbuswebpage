@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="opacity-70">© {new Date().getFullYear()} {siteMeta.displayName}. All rights reserved.</div>
         <nav className="flex gap-4 opacity-80">
           {siteMeta.socials?.map((s) => (
-            <a key={s.label} href={s.url} target="_blank" className="hover:opacity-100 underline-offset-4 hover:underline">
+            <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" className="hover:opacity-100 underline-offset-4 hover:underline">
               {s.label}
             </a>
           ))}

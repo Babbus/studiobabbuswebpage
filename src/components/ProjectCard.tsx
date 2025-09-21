@@ -30,6 +30,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
             src={appleEmbed}
             className="transition-transform duration-300 group-hover:scale-[1.01]"
+            referrerPolicy="strict-origin-when-cross-origin"
           />
         </div>
       )}
@@ -43,6 +44,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             loading="lazy" 
             allow="autoplay; encrypted-media; picture-in-picture" 
             allowFullScreen 
+            referrerPolicy="strict-origin-when-cross-origin"
           />
         </div>
       )}
@@ -60,6 +62,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                 key={l.url} 
                 href={l.url} 
                 target="_blank" 
+                rel="noopener noreferrer"
                 className="text-xs underline underline-offset-4 hover:no-underline hover:text-[color:oklch(36%_0.16_270)] transition-colors duration-300"
               >
                 {l.label}
@@ -77,6 +80,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               height="190" 
               title={`${project.title} — Steam`}
               className="transition-transform duration-300 group-hover:scale-[1.01]"
+              referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
         )}

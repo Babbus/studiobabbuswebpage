@@ -2,7 +2,6 @@
 
 import Section from "@/components/Section";
 import ContactForm from "@/components/ContactForm";
-import InstagramStrip from "@/components/InstagramStrip";
 
 export default function ContactPage() {
   return (
@@ -13,10 +12,6 @@ export default function ContactPage() {
           Open for freelance sound design, music production, and game audio integration projects. Available for remote collaboration worldwide.
         </p>
         <ContactForm />
-      </Section>
-
-      <Section title="Instagram">
-        <InstagramStrip />
       </Section>
     </div>
   );
