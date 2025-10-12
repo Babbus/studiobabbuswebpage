@@ -53,27 +53,6 @@ export const reels: Reel[] = [
     host: "youtube",
     url: "https://youtu.be/cq0iS40ujWM",
   },
-  {
-    id: "yt-Dw5VOsFuX4k",
-    title: "YouTube Reel — Dw5VOsFuX4k",
-    year: new Date().getFullYear(),
-    host: "youtube",
-    url: "https://youtu.be/Dw5VOsFuX4k",
-  },
-  {
-    id: "yt-utcgjKqOPBg",
-    title: "YouTube Reel — utcgjKqOPBg",
-    year: new Date().getFullYear(),
-    host: "youtube",
-    url: "https://youtu.be/utcgjKqOPBg",
-  },
-  {
-    id: "yt-9--r6LFt8d0",
-    title: "YouTube Reel — 9--r6LFt8d0",
-    year: new Date().getFullYear(),
-    host: "youtube",
-    url: "https://youtu.be/9--r6LFt8d0",
-  },
 
   // Previously added reels
   {

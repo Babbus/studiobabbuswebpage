@@ -101,52 +101,52 @@ export const projects: Project[] = [
     tags: ["Gameplay", "SFX"],
   },
   {
-    slug: "game-Dw5VOsFuX4k",
-    title: "Game Project — YouTube Short Dw5VOsFuX4k",
-    year: 2025,
+    slug: "game-4fUYrXJlSYg",
+    title: "Game Project — Interactive Audio",
+    year: 2024,
     category: "Game",
-    roles: ["Sound Designer"],
+    roles: ["Game Audio Designer", "FMOD Implementation"],
     tools: ["FMOD", "Unity", "Pro Tools"],
-    summary: "Gameplay SFX and mix.",
+    summary: "Interactive audio system design and implementation for game project.",
     media: [
-      { type: "video", url: "https://youtu.be/Dw5VOsFuX4k" },
+      { type: "video", url: "https://www.youtube.com/watch/4fUYrXJlSYg" },
     ],
     links: [
-      { label: "YouTube", url: "https://youtu.be/Dw5VOsFuX4k" }
+      { label: "YouTube", url: "https://www.youtube.com/watch/4fUYrXJlSYg" }
     ],
-    tags: ["Gameplay", "SFX"],
+    tags: ["Game Audio", "FMOD", "Unity"],
   },
   {
-    slug: "game-utcgjKqOPBg",
-    title: "Game Project — YouTube Short utcgjKqOPBg",
-    year: 2025,
+    slug: "game-3pIigYXWyW0",
+    title: "Game Project — Dynamic Sound System",
+    year: 2024,
     category: "Game",
-    roles: ["Sound Designer"],
-    tools: ["FMOD", "Unity", "Pro Tools"],
-    summary: "Gameplay SFX and mix.",
+    roles: ["Audio Programmer", "Sound Designer"],
+    tools: ["Unity", "FMOD", "C#"],
+    summary: "Dynamic sound system programming and audio design for gameplay.",
     media: [
-      { type: "video", url: "https://youtu.be/utcgjKqOPBg" },
+      { type: "video", url: "https://www.youtube.com/watch/3pIigYXWyW0" },
     ],
     links: [
-      { label: "YouTube", url: "https://youtu.be/utcgjKqOPBg" }
+      { label: "YouTube", url: "https://www.youtube.com/watch/3pIigYXWyW0" }
     ],
-    tags: ["Gameplay", "SFX"],
+    tags: ["Game Audio", "Programming", "Dynamic Audio"],
   },
   {
-    slug: "game-9--r6LFt8d0",
-    title: "Game Project — YouTube Short 9--r6LFt8d0",
-    year: 2025,
+    slug: "game-ZnBy8I4laOw",
+    title: "Game Project — Audio Integration",
+    year: 2024,
     category: "Game",
-    roles: ["Sound Designer"],
-    tools: ["FMOD", "Unity", "Pro Tools"],
-    summary: "Gameplay SFX and mix.",
+    roles: ["Audio Integrator", "Game Sound Designer"],
+    tools: ["Unity", "FMOD", "Pro Tools"],
+    summary: "Complete audio integration and sound design for game development.",
     media: [
-      { type: "video", url: "https://youtu.be/9--r6LFt8d0" },
+      { type: "video", url: "https://www.youtube.com/watch/ZnBy8I4laOw" },
     ],
     links: [
-      { label: "YouTube", url: "https://youtu.be/9--r6LFt8d0" }
+      { label: "YouTube", url: "https://www.youtube.com/watch/ZnBy8I4laOw" }
     ],
-    tags: ["Gameplay", "SFX"],
+    tags: ["Game Audio", "Integration", "Unity"],
   },
   {
     slug: "game-4fUYrXJlSYg",
