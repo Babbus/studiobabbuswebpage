@@ -1,14 +1,21 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Reel } from "@/types/content";
 import VideoCard from "@/components/VideoCard";
 
-export default function ReelCarousel({ reels }: { reels: Reel[] }) {
-  const pageSize = 3;
+export default function ReelCarousel({ reels, intervalMs = 5000, pageSize = 3 }: { reels: Reel[]; intervalMs?: number; pageSize?: number }) {
   const pageCount = Math.ceil(reels.length / pageSize);
   const [page, setPage] = useState(0);
   const items = useMemo(() => reels.slice(page * pageSize, page * pageSize + pageSize), [reels, page]);
+
+  useEffect(() => {
+    if (pageCount <= 1) return;
+    const id = setInterval(() => {
+      setPage((p) => (p >= pageCount - 1 ? 0 : p + 1));
+    }, intervalMs);
+    return () => clearInterval(id);
+  }, [pageCount, intervalMs]);
 
   return (
     <div className="relative">

@@ -4,7 +4,7 @@ export const reels: Reel[] = [
   // New reels (YouTube)
   {
     id: "yt-xftARzyNle4",
-    title: "YouTube Reel — xftARzyNle4",
+    title: "Fortnite Trailer",
     year: new Date().getFullYear(),
     host: "youtube",
     url: "https://www.youtube.com/watch?v=xftARzyNle4",
@@ -18,7 +18,7 @@ export const reels: Reel[] = [
   },
   {
     id: "yt-EayqDVM8N-I",
-    title: "YouTube Reel — EayqDVM8N-I",
+    title: "Land of the Crescent — Animation SFX",
     year: new Date().getFullYear(),
     host: "youtube",
     url: "https://youtu.be/EayqDVM8N-I",
@@ -85,7 +85,7 @@ export const reels: Reel[] = [
   },
   {
     id: "yt-kUMmmkhRq74",
-    title: "YouTube Reel — kUMmmkhRq74",
+    title: "Fix Fixer Animation SFX",
     year: new Date().getFullYear(),
     host: "youtube",
     url: "https://www.youtube.com/watch?v=kUMmmkhRq74",
@@ -136,3 +136,30 @@ export const reels: Reel[] = [
     url: "https://vimeo.com/1055673222",
   },
 ]; 
+
+export const featuredReels: Reel[] = [
+  // Fix Fixer Animation SFX
+  {
+    id: "yt-kUMmmkhRq74",
+    title: "Fix Fixer Animation SFX",
+    year: new Date().getFullYear(),
+    host: "youtube",
+    url: "https://www.youtube.com/watch?v=kUMmmkhRq74",
+  },
+  // Fortnite trailer
+  {
+    id: "yt-xftARzyNle4",
+    title: "Fortnite Trailer",
+    year: new Date().getFullYear(),
+    host: "youtube",
+    url: "https://www.youtube.com/watch?v=xftARzyNle4",
+  },
+  // Land of the Crescent animation sfx
+  {
+    id: "yt-EayqDVM8N-I",
+    title: "Land of the Crescent — Animation SFX",
+    year: new Date().getFullYear(),
+    host: "youtube",
+    url: "https://youtu.be/EayqDVM8N-I",
+  },
+];

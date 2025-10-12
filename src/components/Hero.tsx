@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { siteMeta } from "@/content/site";
-import { reels } from "@/content/reels";
+import { featuredReels } from "@/content/reels";
 import { getEmbedSrc, getYouTubeThumbnail } from "@/lib/video";
 import { useMemo, useState } from "react";
 
@@ -9,10 +9,8 @@ export default function Hero() {
   const [showVideo, setShowVideo] = useState(false);
 
   const featured = useMemo(() => {
-    // Try to find a reel with id 'showreel' else first YouTube reel
-    const exact = reels.find((r) => r.id === "showreel");
-    const pick = exact || reels.find((r) => r.host === "youtube") || reels[0];
-    return pick;
+    // Prefer the first featured reel
+    return featuredReels[0];
   }, []);
 
   const featuredSrc = featured ? getEmbedSrc(featured) : undefined;

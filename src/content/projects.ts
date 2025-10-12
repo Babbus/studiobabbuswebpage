@@ -85,6 +85,70 @@ export const projects: Project[] = [
 
   // New Game Projects
   {
+    slug: "game-cq0iS40ujWM",
+    title: "Game Project — YouTube Short cq0iS40ujWM",
+    year: 2025,
+    category: "Game",
+    roles: ["Sound Designer"],
+    tools: ["FMOD", "Unity", "Pro Tools"],
+    summary: "Gameplay SFX and mix.",
+    media: [
+      { type: "video", url: "https://youtu.be/cq0iS40ujWM" },
+    ],
+    links: [
+      { label: "YouTube", url: "https://youtu.be/cq0iS40ujWM" }
+    ],
+    tags: ["Gameplay", "SFX"],
+  },
+  {
+    slug: "game-Dw5VOsFuX4k",
+    title: "Game Project — YouTube Short Dw5VOsFuX4k",
+    year: 2025,
+    category: "Game",
+    roles: ["Sound Designer"],
+    tools: ["FMOD", "Unity", "Pro Tools"],
+    summary: "Gameplay SFX and mix.",
+    media: [
+      { type: "video", url: "https://youtu.be/Dw5VOsFuX4k" },
+    ],
+    links: [
+      { label: "YouTube", url: "https://youtu.be/Dw5VOsFuX4k" }
+    ],
+    tags: ["Gameplay", "SFX"],
+  },
+  {
+    slug: "game-utcgjKqOPBg",
+    title: "Game Project — YouTube Short utcgjKqOPBg",
+    year: 2025,
+    category: "Game",
+    roles: ["Sound Designer"],
+    tools: ["FMOD", "Unity", "Pro Tools"],
+    summary: "Gameplay SFX and mix.",
+    media: [
+      { type: "video", url: "https://youtu.be/utcgjKqOPBg" },
+    ],
+    links: [
+      { label: "YouTube", url: "https://youtu.be/utcgjKqOPBg" }
+    ],
+    tags: ["Gameplay", "SFX"],
+  },
+  {
+    slug: "game-9--r6LFt8d0",
+    title: "Game Project — YouTube Short 9--r6LFt8d0",
+    year: 2025,
+    category: "Game",
+    roles: ["Sound Designer"],
+    tools: ["FMOD", "Unity", "Pro Tools"],
+    summary: "Gameplay SFX and mix.",
+    media: [
+      { type: "video", url: "https://youtu.be/9--r6LFt8d0" },
+    ],
+    links: [
+      { label: "YouTube", url: "https://youtu.be/9--r6LFt8d0" }
+    ],
+    tags: ["Gameplay", "SFX"],
+  },
+  {
     slug: "game-4fUYrXJlSYg",
     title: "Game Project — Interactive Audio",
     year: 2024,

@@ -4,7 +4,7 @@ import ReelCarousel from "@/components/ReelCarousel";
 import PortfolioWithFilters from "@/components/PortfolioWithFilters";
 import ContactForm from "@/components/ContactForm";
 import ExpandableText from "@/components/ExpandableText";
-import { reels } from "@/content/reels";
+import { featuredReels } from "@/content/reels";
 import { shortBio, longBio } from "@/content/about";
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
       <Hero />
       <Section id="reels" title="Featured Reels">
         <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-          <ReelCarousel reels={reels} />
+          <ReelCarousel reels={featuredReels} intervalMs={6000} pageSize={3} />
         </div>
       </Section>
       <Section id="portfolio" title="Portfolio">
