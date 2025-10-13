@@ -88,14 +88,14 @@ export default function Home() {
       <Section id="studio" title="Gallery">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
           <Image
-            src="/studio/1.jpeg"
+            src="/studio/1.png"
             alt="Studio Image 1"
             width={800}
             height={600}
             className="rounded-lg object-cover"
           />
           <Image
-            src="/studio/2.jpeg"
+            src="/studio/2.png"
             alt="Studio Image 2"
             width={800}
             height={600}
