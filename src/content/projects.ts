@@ -341,6 +341,22 @@ const projectData: Project[] = [
     ],
     tags: ["Gameplay", "SFX"],
   },
+  {
+    slug: "beat-your-brainrot-sfx-showcase",
+    title: "Beat Your Brainrot SFX showcase",
+    year: 2025,
+    category: "Game",
+    roles: ["Sound Designer"],
+    tools: ["FMOD", "Unity", "Pro Tools"],
+    summary: "Beat Your Brainrot SFX showcase",
+    media: [
+      { type: "video", url: "https://www.youtube.com/watch?v=a-VOzpEwtVQ" },
+    ],
+    links: [
+      { label: "YouTube", url: "https://www.youtube.com/watch?v=a-VOzpEwtVQ" }
+    ],
+    tags: ["SFX", "Showcase"],
+  },
 ];
 
 export const projects: Project[] = [...projectData].reverse(); 
