@@ -3,7 +3,9 @@
 import { useState } from "react";
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -44,27 +46,84 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      <input name="website" autoComplete="off" tabIndex={-1} aria-hidden="true" style={{ display: "none" }} />
-      <div className="grid sm:grid-cols-2 gap-4">
-        <input name="name" placeholder="Name" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
-        <input name="company" placeholder="Company (optional)" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
+    <div className="rounded-2xl border border-white/10 p-6 bg-white/[0.02] max-w-2xl mx-auto">
+      <h2 className="text-2xl font-semibold mb-4 text-center">
+        Let&apos;s work together
+      </h2>
+      <p className="text-center opacity-80 mb-6">
+        Whether you have a question, a project, or just want to say hi, my
+        inbox is always open.
+      </p>
+      <div className="flex justify-center mb-6">
+        <a
+          href="tel:+905444542129"
+          className="rounded-full px-6 py-2 bg-teal-500/30 border border-teal-400/50 text-teal-100 shadow-lg shadow-teal-500/20 hover:scale-105 transition-all duration-300"
+        >
+          Call Me Directly
+        </a>
       </div>
-      <div className="grid sm:grid-cols-2 gap-4">
-        <input name="email" type="email" placeholder="Email" required className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
-        <input name="budget" placeholder="Budget (optional)" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
+      <div className="text-center opacity-60 mb-6">
+        <span>or</span>
       </div>
-      <div className="grid sm:grid-cols-2 gap-4">
-        <input name="timeline" placeholder="Timeline (optional)" className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3]" />
-      </div>
-      <textarea name="message" placeholder="Tell me about your project" rows={5} className="bg-white dark:bg-transparent border-2 border-black/50 dark:border-white/25 ring-1 ring-black/10 dark:ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-black/60 dark:placeholder:text-white/60 focus:border-[color:oklch(52%_0.18_270)] focus:ring-2 focus:ring-[color:oklch(62%_0.22_270)/0.3] w-full" />
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="rounded-md px-5 py-2 bg-[color:oklch(48%_0.18_270)] text-white hover:bg-[color:oklch(54%_0.2_270)] disabled:opacity-60 border border-white/10 transition-all duration-300"
-      >
-        {status === "sending" ? "Sending..." : status === "sent" ? "Sent ✓" : "Send"}
-      </button>
-    </form>
+      <form onSubmit={onSubmit} className="space-y-4">
+        <input
+          name="website"
+          autoComplete="off"
+          tabIndex={-1}
+          aria-hidden="true"
+          style={{ display: "none" }}
+        />
+        <div className="grid sm:grid-cols-2 gap-4">
+          <input
+            name="name"
+            placeholder="Name"
+            className="bg-transparent border border-white/25 ring-1 ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-white/60 focus:border-teal-400/50 focus:ring-2 focus:ring-teal-500/20"
+          />
+          <input
+            name="company"
+            placeholder="Company (optional)"
+            className="bg-transparent border border-white/25 ring-1 ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-white/60 focus:border-teal-400/50 focus:ring-2 focus:ring-teal-500/20"
+          />
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+            className="bg-transparent border border-white/25 ring-1 ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-white/60 focus:border-teal-400/50 focus:ring-2 focus:ring-teal-500/20"
+          />
+          <input
+            name="budget"
+            placeholder="Budget (optional)"
+            className="bg-transparent border border-white/25 ring-1 ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-white/60 focus:border-teal-400/50 focus:ring-2 focus:ring-teal-500/20"
+          />
+        </div>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <input
+            name="timeline"
+            placeholder="Timeline (optional)"
+            className="bg-transparent border border-white/25 ring-1 ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-white/60 focus:border-teal-400/50 focus:ring-2 focus:ring-teal-500/20"
+          />
+        </div>
+        <textarea
+          name="message"
+          placeholder="Tell me about your project"
+          rows={5}
+          className="bg-transparent border border-white/25 ring-1 ring-white/10 rounded-lg px-3 py-2 outline-none shadow-sm placeholder:text-white/60 focus:border-teal-400/50 focus:ring-2 focus:ring-teal-500/20 w-full"
+        />
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="w-full rounded-md px-5 py-2 bg-teal-500/30 border border-teal-400/50 text-teal-100 shadow-lg shadow-teal-500/20 hover:scale-105 disabled:opacity-60 transition-all duration-300"
+        >
+          {status === "sending"
+            ? "Sending..."
+            : status === "sent"
+            ? "Sent ✓"
+            : "Send"}
+        </button>
+      </form>
+    </div>
   );
 } 

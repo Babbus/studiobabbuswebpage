@@ -8,4 +8,20 @@ Currently, Batuhan is developing his own indie game, where he combines his skill
 
 In the short term, his ambition is to establish a game studio that specializes in high-quality, sound-driven experiences. In the long run, Batuhan envisions growing this studio into a globally recognized creative force, known for producing innovative games that push the boundaries of audio design and interactive storytelling.
 
-Driven, detail-oriented, and guided by a clear vision, Batuhan continues to refine his craft and expand his creative horizons. Whether through indie development or collaborative studio work, he is committed to shaping the future of game audio with originality and passion.` 
+Driven, detail-oriented, and guided by a clear vision, Batuhan continues to refine his craft and expand his creative horizons. Whether through indie development or collaborative studio work, he is committed to shaping the future of game audio with originality and passion.`;
+
+export const coreSkills = [
+  "Sound Design for Games & Film",
+  "Music Production & Composition",
+  "Game Audio Implementation",
+  "Audio Post-Production (Mixing & Mastering)",
+  "Interactive Audio Systems",
+  "Spatial Audio (Dolby Atmos)",
+];
+
+export const tools = {
+  DAWs: ["Pro Tools", "Ableton Live", "Reaper"],
+  "Game Engines & Middleware": ["Unity", "Unreal Engine", "FMOD", "Wwise"],
+  "Programming & Scripting": ["C++", "C#", "TypeScript"],
+  "Other Software": ["Izotope RX"],
+}; 
