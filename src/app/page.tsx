@@ -1,10 +1,10 @@
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import ReelCarousel from "@/components/ReelCarousel";
-import PortfolioWithFilters from "@/components/PortfolioWithFilters";
 import ContactForm from "@/components/ContactForm";
 import ExpandableText from "@/components/ExpandableText";
 import Image from "next/image";
+import Link from "next/link";
 import { featuredReels } from "@/content/reels";
 import { shortBio, longBio, coreSkills, tools } from "@/content/about";
 
@@ -22,11 +22,21 @@ export default function Home() {
           <ReelCarousel reels={featuredReels} intervalMs={6000} pageSize={3} />
         </div>
       </Section>
-      <Section id="portfolio" title="Portfolio">
-        <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <PortfolioWithFilters />
+
+      <Section title="Portfolio">
+        <div className="text-center">
+          <p className="mb-4">
+            You can find my full portfolio of work on the portfolio page.
+          </p>
+          <Link
+            href="/portfolio"
+            className="group rounded-full border border-black/10 dark:border-white/10 px-4 py-2 text-sm disabled:opacity-40 hover:bg-[color:oklch(86%_0.06_270)] dark:hover:bg-[color:oklch(48%_0.18_270)] hover:border-[color:oklch(52%_0.18_270)] dark:hover:border-[color:oklch(62%_0.22_270)] hover:text-[color:oklch(36%_0.16_270)] dark:hover:text-white transition-all duration-300 hover:scale-105 disabled:hover:scale-100 disabled:hover:bg-transparent"
+          >
+            View Full Portfolio
+          </Link>
         </div>
       </Section>
+
       <Section id="about" title="About">
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>

@@ -3,24 +3,51 @@
 import type { Project } from "@/types/content";
 import { getEmbedSrcFromUrl, getAppleMusicEmbed, getAppleEmbedHeight, getSteamAppIdFromUrl, getSteamWidgetUrl } from "@/lib/video";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const mediaImage = project.media?.find((m) => m.type === "image")?.url;
   const mediaVideo = project.media?.find((m) => m.type === "video")?.url;
   const mediaAudioEmbed = project.media?.find((m) => m.type === "audio")?.url; // allow direct Apple embed URL here
 
-  const videoUrl = mediaVideo
-    || project.links?.find((l) => l.url.includes("youtube.com") || l.url.includes("youtu.be") || l.url.includes("vimeo.com"))?.url;
+  const externalVideoUrl = mediaVideo && (mediaVideo.includes("youtube") || mediaVideo.includes("youtu.be") || mediaVideo.includes("vimeo"))
+    ? mediaVideo
+    : project.links?.find((l) => l.url.includes("youtube.com") || l.url.includes("youtu.be") || l.url.includes("vimeo.com"))?.url;
+
+  const localVideoUrl = mediaVideo && !externalVideoUrl ? mediaVideo : undefined;
 
   const appleLink = project.links?.find((l) => l.url.includes("music.apple.com"))?.url;
   const steamLink = project.links?.find((l) => l.url.includes("store.steampowered.com/app/"))?.url;
 
-  const embed = videoUrl ? getEmbedSrcFromUrl(videoUrl) : undefined;
+  const embed = externalVideoUrl ? getEmbedSrcFromUrl(externalVideoUrl) : undefined;
   const appleEmbed = mediaAudioEmbed || (appleLink ? getAppleMusicEmbed(appleLink) : undefined);
   const appleHeight = appleEmbed ? getAppleEmbedHeight(appleEmbed) : undefined;
   const steamAppId = steamLink ? getSteamAppIdFromUrl(steamLink) : undefined;
 
   return (
     <div className="group rounded-xl overflow-hidden bg-white/70 dark:bg-white/[0.02] border-2 border-black/50 dark:border-white/20 ring-1 ring-black/10 dark:ring-white/10 transition-all duration-300 hover:border-[color:oklch(52%_0.18_270)] dark:hover:border-[color:oklch(62%_0.22_270)] hover:bg-white/80 dark:hover:bg-white/[0.05] hover:scale-[1.02] hover:shadow-xl hover:shadow-[color:oklch(62%_0.22_270)/0.2]">
+      {mediaImage && (
+        <div className="aspect-video bg-black overflow-hidden">
+          <Image
+            src={mediaImage}
+            alt={project.title}
+            width={500}
+            height={300}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.01]"
+          />
+        </div>
+      )}
+      
+      {localVideoUrl && (
+        <div className="aspect-video bg-black overflow-hidden">
+          <video
+            src={localVideoUrl}
+            controls
+            className="w-full h-full transition-transform duration-300 group-hover:scale-[1.01]"
+          />
+        </div>
+      )}
+
       {appleEmbed && (
         <div className="w-full bg-black overflow-hidden">
           <iframe
