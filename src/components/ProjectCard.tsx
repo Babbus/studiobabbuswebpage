@@ -15,6 +15,10 @@ export default function ProjectCard({ project, minimal = false }: { project: Pro
     : project.links?.find((l) => l.url.includes("youtube.com") || l.url.includes("youtu.be") || l.url.includes("vimeo.com"))?.url;
 
   const localVideoUrl = mediaVideo && !externalVideoUrl ? mediaVideo : undefined;
+  const localVideoUrls = (project.media || [])
+    .filter((m) => m.type === "video")
+    .map((m) => m.url)
+    .filter((u) => !!u && !(u.includes("youtube") || u.includes("youtu.be") || u.includes("vimeo")));
 
   const appleLink = project.links?.find((l) => l.url.includes("music.apple.com"))?.url;
   const steamLink = project.links?.find((l) => l.url.includes("store.steampowered.com/app/"))?.url;
@@ -23,6 +27,14 @@ export default function ProjectCard({ project, minimal = false }: { project: Pro
   const appleEmbed = mediaAudioEmbed || (appleLink ? getAppleMusicEmbed(appleLink) : undefined);
   const appleHeight = appleEmbed ? getAppleEmbedHeight(appleEmbed) : undefined;
   const steamAppId = steamLink ? getSteamAppIdFromUrl(steamLink) : undefined;
+
+  const getMime = (url: string) => {
+    const lower = url.toLowerCase();
+    if (lower.endsWith(".mp4")) return "video/mp4";
+    if (lower.endsWith(".webm")) return "video/webm";
+    if (lower.endsWith(".mov")) return "video/quicktime";
+    return undefined;
+  };
 
   return (
     <div className="group rounded-xl overflow-hidden bg-white/70 dark:bg-white/[0.02] border-2 border-black/50 dark:border-white/20 ring-1 ring-black/10 dark:ring-white/10 transition-all duration-300 hover:border-[color:oklch(52%_0.18_270)] dark:hover:border-[color:oklch(62%_0.22_270)] hover:bg-white/80 dark:hover:bg-white/[0.05] hover:scale-[1.02] hover:shadow-xl hover:shadow-[color:oklch(62%_0.22_270)/0.2]">
@@ -38,17 +50,18 @@ export default function ProjectCard({ project, minimal = false }: { project: Pro
         </div>
       )}
       
-      {localVideoUrl && (
+      {localVideoUrls.length > 0 && (
         <div className="aspect-video bg-black overflow-hidden">
           <video
             controls
             playsInline
+            preload="metadata"
             className="w-full h-full transition-transform duration-300 group-hover:scale-[1.01]"
           >
-            <source 
-              src={localVideoUrl} 
-              type={localVideoUrl.toLowerCase().endsWith(".mp4") ? "video/mp4" : localVideoUrl.toLowerCase().endsWith(".webm") ? "video/webm" : localVideoUrl.toLowerCase().endsWith(".mov") ? "video/quicktime" : undefined}
-            />
+            {localVideoUrls.map((url) => (
+              <source key={url} src={url} type={getMime(url)} />
+            ))}
+            Your browser can’t play this video. Please try MP4 (H.264) or WebM.
           </video>
         </div>
       )}

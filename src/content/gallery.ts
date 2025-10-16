@@ -73,6 +73,9 @@ export const galleryVideos: Project[] = [
     summary: "Follow-up studio tour.",
     media: [
       { type: "video" as const, url: "/studio/StudioVideo2.mov" },
+      // add alternatives when available for better compatibility
+      // { type: "video" as const, url: "/studio/StudioVideo2.mp4" },
+      // { type: "video" as const, url: "/studio/StudioVideo2.webm" },
     ],
     tags: ["Studio", "Videography"],
   },
