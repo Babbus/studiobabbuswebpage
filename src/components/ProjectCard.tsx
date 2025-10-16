@@ -41,10 +41,15 @@ export default function ProjectCard({ project, minimal = false }: { project: Pro
       {localVideoUrl && (
         <div className="aspect-video bg-black overflow-hidden">
           <video
-            src={localVideoUrl}
             controls
+            playsInline
             className="w-full h-full transition-transform duration-300 group-hover:scale-[1.01]"
-          />
+          >
+            <source 
+              src={localVideoUrl} 
+              type={localVideoUrl.toLowerCase().endsWith(".mp4") ? "video/mp4" : localVideoUrl.toLowerCase().endsWith(".webm") ? "video/webm" : localVideoUrl.toLowerCase().endsWith(".mov") ? "video/quicktime" : undefined}
+            />
+          </video>
         </div>
       )}
 
