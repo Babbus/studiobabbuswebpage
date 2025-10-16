@@ -72,7 +72,7 @@ export const galleryVideos: Project[] = [
     roles: ["Videography"],
     summary: "Follow-up studio tour.",
     media: [
-      { type: "video" as const, url: "/studio/StudioVideo2.mp4" },
+      { type: "video" as const, url: "/studio/Studiovideo2.mp4" },
       // { type: "video" as const, url: "/studio/StudioVideo2.webm" },
       // { type: "video" as const, url: "/studio/StudioVideo2.mov" },
     ],
