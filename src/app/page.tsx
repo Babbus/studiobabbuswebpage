@@ -1,54 +1,51 @@
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import ReelCarousel from "@/components/ReelCarousel";
+import PortfolioWithFilters from "@/components/PortfolioWithFilters";
 import ContactForm from "@/components/ContactForm";
 import ExpandableText from "@/components/ExpandableText";
 import Image from "next/image";
-import Link from "next/link";
+import VideoGrid from "@/components/VideoGrid";
+
 import { featuredReels } from "@/content/reels";
 import { shortBio, longBio, coreSkills, tools } from "@/content/about";
+import { services } from "@/content/services";
+import { clients } from "@/content/clients";
+import { galleryPhotos, galleryVideos } from "@/content/gallery";
 
 export default function Home() {
   return (
-    <div className="min-h-screen relative">
-      {/* Enhanced background overlay with shimmer effect */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 shimmer opacity-10 dark:opacity-30" />
-      </div>
-      
+    <main>
       <Hero />
+
       <Section id="reels" title="Featured Reels">
-        <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-          <ReelCarousel reels={featuredReels} intervalMs={6000} pageSize={3} />
+        <div className="animate-fade-in-up">
+          <ReelCarousel reels={featuredReels} />
         </div>
       </Section>
 
-      <Section title="Portfolio">
-        <div className="text-center">
-          <p className="mb-4">
-            You can find my full portfolio of work on the portfolio page.
-          </p>
-          <Link
-            href="/portfolio"
-            className="group rounded-full border border-black/10 dark:border-white/10 px-4 py-2 text-sm disabled:opacity-40 hover:bg-[color:oklch(86%_0.06_270)] dark:hover:bg-[color:oklch(48%_0.18_270)] hover:border-[color:oklch(52%_0.18_270)] dark:hover:border-[color:oklch(62%_0.22_270)] hover:text-[color:oklch(36%_0.16_270)] dark:hover:text-white transition-all duration-300 hover:scale-105 disabled:hover:scale-100 disabled:hover:bg-transparent"
-          >
-            View Full Portfolio
-          </Link>
+      <Section id="portfolio" title="Portfolio">
+        <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <PortfolioWithFilters />
+        </div>
+      </Section>
+      
+      <Section id="gallery" title="Gallery">
+        <div className="space-y-12">
+          <div>
+            <h2 className="text-2xl font-bold text-center mb-8">Photos</h2>
+            <VideoGrid projects={galleryPhotos} minimal={true} />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-center mb-8">Videos</h2>
+            <VideoGrid projects={galleryVideos} minimal={true} />
+          </div>
         </div>
       </Section>
 
       <Section id="about" title="About">
         <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-1 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <Image
-              src="/profile.png"
-              alt="Batuhan Yıldız"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover"
-            />
-          </div>
-          <div className="lg:col-span-2 space-y-6 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <div className="lg:col-span-2 space-y-4">
             <p className="opacity-80 max-w-[75ch]">{shortBio}</p>
             <ExpandableText moreLabel="More about me" lessLabel="Show less">
               <p className="max-w-[80ch] opacity-90 whitespace-pre-line">{longBio}</p>
@@ -61,6 +58,15 @@ export default function Home() {
                 <span className="bg-white/10 text-white/80 px-3 py-1 rounded-full text-sm">Music Producer</span>
               </div>
             </div>
+          </div>
+          <div className="lg:col-span-1 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+            <Image
+              src="/profile.png"
+              alt="Batuhan Yıldız"
+              width={500}
+              height={500}
+              className="rounded-lg object-cover"
+            />
           </div>
         </div>
       </Section>
@@ -95,24 +101,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-      <Section id="studio" title="Gallery">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-          <Image
-            src="/studio/Studio1.png"
-            alt="Studio Image 1"
-            width={800}
-            height={600}
-            className="rounded-lg object-cover"
-          />
-          <Image
-            src="/studio/Studio2.png"
-            alt="Studio Image 2"
-            width={800}
-            height={600}
-            className="rounded-lg object-cover"
-          />
-        </div>
-      </Section>
       <Section id="contact" title="Contact">
         <div className="grid lg:grid-cols-1 gap-12">
           <div className="animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
@@ -123,6 +111,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-    </div>
+    </main>
   );
 }

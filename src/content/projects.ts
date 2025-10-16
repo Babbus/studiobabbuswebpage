@@ -357,66 +357,6 @@ const projectData: Project[] = [
     ],
     tags: ["SFX", "Showcase"],
   },
-  {
-    slug: "studio-photo-1",
-    title: "Studio Session",
-    year: 2024,
-    category: "Others",
-    roles: ["Photography"],
-    summary: "A snapshot from a studio session.",
-    media: [
-      { type: "image", url: "/studio/Studio1.png" },
-    ],
-    tags: ["Studio", "Photography"],
-  },
-  {
-    slug: "studio-photo-2",
-    title: "Studio Gear",
-    year: 2024,
-    category: "Others",
-    roles: ["Photography"],
-    summary: "A look at some of the gear in the studio.",
-    media: [
-      { type: "image", url: "/studio/Studio2.png" },
-    ],
-    tags: ["Studio", "Photography", "Gear"],
-  },
-  {
-    slug: "studio-photo-3",
-    title: "Mixing Desk",
-    year: 2024,
-    category: "Others",
-    roles: ["Photography"],
-    summary: "The central hub of the studio.",
-    media: [
-      { type: "image", url: "/studio/Studio3.png" },
-    ],
-    tags: ["Studio", "Photography", "Mixing"],
-  },
-  {
-    slug: "studio-photo-4",
-    title: "Vocal Booth",
-    year: 2024,
-    category: "Others",
-    roles: ["Photography"],
-    summary: "The quietest room in the building.",
-    media: [
-      { type: "image", url: "/studio/Studio4.png" },
-    ],
-    tags: ["Studio", "Photography", "Vocal Booth"],
-  },
-  {
-    slug: "studio-video-1",
-    title: "Studio Walkthrough",
-    year: 2024,
-    category: "Others",
-    roles: ["Videography"],
-    summary: "A quick tour of the studio space.",
-    media: [
-      { type: "video", url: "/studio/StudioVideo1.mp4" },
-    ],
-    tags: ["Studio", "Videography", "Tour"],
-  },
 ];
 
 export const projects: Project[] = [...projectData].reverse(); 

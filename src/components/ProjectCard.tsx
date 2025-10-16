@@ -5,7 +5,7 @@ import { getEmbedSrcFromUrl, getAppleMusicEmbed, getAppleEmbedHeight, getSteamAp
 import Link from "next/link";
 import Image from "next/image";
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({ project, minimal = false }: { project: Project, minimal?: boolean }) {
   const mediaImage = project.media?.find((m) => m.type === "image")?.url;
   const mediaVideo = project.media?.find((m) => m.type === "video")?.url;
   const mediaAudioEmbed = project.media?.find((m) => m.type === "audio")?.url; // allow direct Apple embed URL here
@@ -76,42 +76,44 @@ export default function ProjectCard({ project }: { project: Project }) {
         </div>
       )}
 
-      <div className="p-4">
-        <div className="text-sm uppercase opacity-60 group-hover:opacity-80 group-hover:text-[color:oklch(36%_0.16_270)] transition-all duration-300">{project.category}</div>
-        <h3 className="text-base font-semibold tracking-tight group-hover:text-[color:oklch(36%_0.16_270)] dark:group-hover:text-white transition-colors duration-300">{project.title}</h3>
-        <div className="text-xs opacity-60 group-hover:opacity-80 transition-opacity duration-300">{project.year} · {project.roles.join(", ")}</div>
-        {project.summary && <p className="text-sm opacity-80 mt-2 group-hover:opacity-90 transition-opacity duration-300">{project.summary}</p>}
+      {!minimal && (
+        <div className="p-4">
+          <div className="text-sm uppercase opacity-60 group-hover:opacity-80 group-hover:text-[color:oklch(36%_0.16_270)] transition-all duration-300">{project.category}</div>
+          <h3 className="text-base font-semibold tracking-tight group-hover:text-[color:oklch(36%_0.16_270)] dark:group-hover:text-white transition-colors duration-300">{project.title}</h3>
+          <div className="text-xs opacity-60 group-hover:opacity-80 transition-opacity duration-300">{project.year} · {project.roles.join(", ")}</div>
+          {project.summary && <p className="text-sm opacity-80 mt-2 group-hover:opacity-90 transition-opacity duration-300">{project.summary}</p>}
 
-        {project.links && project.links.length > 0 && (
-          <div className="mt-3 flex gap-3 flex-wrap">
-            {project.links.map((l) => (
-              <Link 
-                key={l.url} 
-                href={l.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-xs underline underline-offset-4 hover:no-underline hover:text-[color:oklch(36%_0.16_270)] transition-colors duration-300"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </div>
-        )}
+          {project.links && project.links.length > 0 && (
+            <div className="mt-3 flex gap-3 flex-wrap">
+              {project.links.map((l) => (
+                <Link 
+                  key={l.url} 
+                  href={l.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-xs underline underline-offset-4 hover:no-underline hover:text-[color:oklch(36%_0.16_270)] transition-colors duration-300"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          )}
 
-        {steamAppId && (
-          <div className="mt-4 overflow-hidden rounded-lg">
-            <iframe 
-              src={getSteamWidgetUrl(steamAppId)} 
-              frameBorder="0" 
-              width="100%" 
-              height="190" 
-              title={`${project.title} — Steam`}
-              className="transition-transform duration-300 group-hover:scale-[1.01]"
-              referrerPolicy="strict-origin-when-cross-origin"
-            />
-          </div>
-        )}
-      </div>
+          {steamAppId && (
+            <div className="mt-4 overflow-hidden rounded-lg">
+              <iframe 
+                src={getSteamWidgetUrl(steamAppId)} 
+                frameBorder="0" 
+                width="100%" 
+                height="190" 
+                title={`${project.title} — Steam`}
+                className="transition-transform duration-300 group-hover:scale-[1.01]"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 } 
