@@ -64,4 +64,16 @@ export const galleryVideos: Project[] = [
     ],
     tags: ["Studio", "Videography", "Tour"],
   },
+  {
+    slug: "studio-video-2",
+    title: "Studio Walkthrough 2",
+    year: 2025,
+    category: "Others" as ProjectCategory,
+    roles: ["Videography"],
+    summary: "Follow-up studio tour.",
+    media: [
+      { type: "video" as const, url: "/studio/StudioVideo2.mov" },
+    ],
+    tags: ["Studio", "Videography"],
+  },
 ];
